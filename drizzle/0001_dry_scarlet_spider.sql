@@ -1,0 +1,1 @@
+ALTER TABLE `users` MODIFY COLUMN `updated_at` timestamp DEFAULT null ON UPDATE CURRENT_TIMESTAMP;
