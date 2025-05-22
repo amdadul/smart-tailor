@@ -5,6 +5,7 @@ import logger from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import subscriptionsRouter from "./src/modules/subscriptions/routes/subscriptions.route.js";
 import usersRouter from "./src/modules/users/routes/users.route.js";
 
 // Fix __dirname in ES modules:
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", usersRouter);
+app.use("/subscriptions", subscriptionsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

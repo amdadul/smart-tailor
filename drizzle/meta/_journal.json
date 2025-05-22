@@ -22,6 +22,34 @@
       "when": 1747670672232,
       "tag": "0002_tiny_revanche",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1747755653896,
+      "tag": "0003_amazing_valkyrie",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1747757585068,
+      "tag": "0004_silly_weapon_omega",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1747757677535,
+      "tag": "0005_fantastic_fenris",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1747757805461,
+      "tag": "0006_loving_skrulls",
+      "breakpoints": true
     }
   ]
 }

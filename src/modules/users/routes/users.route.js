@@ -1,17 +1,22 @@
 import express from "express";
 import { authenticate } from "../../../middlewares/auth.middleware.js";
-import { createUser, loginUser } from "../controllers/users.controller.js";
 import {
+  businessSignUp,
+  createUser,
+  getUserList,
+  loginUser,
+} from "../controllers/users.controller.js";
+import {
+  validateBusinessSignup,
   validateCreateUser,
   validateLoginUser,
 } from "../validations/users.validation.js";
 
 const router = express.Router();
 
-router.post("/create", validateCreateUser, createUser);
+router.post("/business/signup", validateBusinessSignup, businessSignUp);
 router.post("/login", validateLoginUser, loginUser);
-router.get("/me", authenticate, (req, res) => {
-  res.json({ message: "Authenticated", user: req.user });
-});
+router.post("/create", authenticate, validateCreateUser, createUser);
+router.get("/list", authenticate, getUserList);
 
 export default router;
