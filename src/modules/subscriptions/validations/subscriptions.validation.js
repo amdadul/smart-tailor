@@ -2,9 +2,8 @@ import { body, validationResult } from "express-validator";
 
 export const validateCreateSubscription = [
   body("planId").notEmpty().withMessage("Plan is required."),
-  body("planPrice").notEmpty().withMessage("Plan Price is required."),
-  body("paymentMethod").notEmpty().withMessage("Payment Method is required."),
-  body("paymentStatus").notEmpty().withMessage("Payment Status is required."),
+  body("method").notEmpty().withMessage("Payment Method is required."),
+  body("transactionId").notEmpty().withMessage("Transaction Id is required."),
 
   (req, res, next) => {
     const errors = validationResult(req);

@@ -1,4 +1,4 @@
-import { and, eq, gte, lte } from "drizzle-orm";
+import { and, desc, eq, gte, lte } from "drizzle-orm";
 import { db } from "../../db.js";
 import { plans } from "../modules/subscriptions/models/plans.schema.js";
 import { stores } from "../modules/subscriptions/models/stores.schema.js";
@@ -21,6 +21,7 @@ export const checkSubscriptionLimit = (type) => {
           gte(subscriptions.endDate, currentDate)
         )
       )
+      .orderBy(desc(subscriptions.id))
       .limit(1);
 
     if (!subscription) {

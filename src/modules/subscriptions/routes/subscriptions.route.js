@@ -7,9 +7,11 @@ import { createStore, getStoreList } from "../controllers/stores.controller.js";
 import {
   getActiveSubscription,
   getLastActiveSubscription,
+  purchaseSubscription,
 } from "../controllers/subscriptions.controller.js";
 import { validateCreatePlan } from "../validations/plans.validation.js";
 import { validateCreateStore } from "../validations/stores.validation.js";
+import { validateCreateSubscription } from "../validations/subscriptions.validation.js";
 
 const router = express.Router();
 
@@ -26,5 +28,11 @@ router.get("/business/list", getBusinessList);
 router.get("/plan/list", getPlanList);
 router.get("/active", authenticate, getActiveSubscription);
 router.get("/last-active", authenticate, getLastActiveSubscription);
+router.post(
+  "/purchase",
+  authenticate,
+  validateCreateSubscription,
+  purchaseSubscription
+);
 
 export default router;
