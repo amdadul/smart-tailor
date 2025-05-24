@@ -16,4 +16,5 @@ export const businesses = mysqlTable("businesses", {
   ownerId: int("owner_id").references(() => users.id),
   status: tinyint("status", { length: 2 }).notNull().default(1),
   createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow(),
 });

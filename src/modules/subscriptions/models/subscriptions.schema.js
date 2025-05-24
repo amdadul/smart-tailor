@@ -4,8 +4,10 @@ import {
   double,
   int,
   mysqlTable,
+  timestamp,
   tinyint,
 } from "drizzle-orm/mysql-core";
+import { users } from "../../users/models/users.schema.js";
 import { businesses } from "./businesses.schema.js";
 import { plans } from "./plans.schema.js";
 
@@ -24,4 +26,8 @@ export const subscriptions = mysqlTable("subscriptions", {
   endDate: datetime("end_date").default(null),
   trialEndDate: datetime("trial_end_date").default(null),
   isActive: boolean("is_active").default(true),
+  createdBy: int("created_by").references(() => users.id),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedBy: int("updated_by").references(() => users.id),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow(),
 });

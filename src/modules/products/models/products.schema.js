@@ -3,9 +3,11 @@ import {
   int,
   mysqlTable,
   serial,
+  timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
 import { businesses } from "../../subscriptions/models/businesses.schema.js";
+import { users } from "../../users/models/users.schema.js";
 
 export const products = mysqlTable("products", {
   id: serial("id").primaryKey(),
@@ -13,4 +15,8 @@ export const products = mysqlTable("products", {
   name: varchar("name", { length: 100 }),
   price: decimal("price", { precision: 10, scale: 2 }),
   image: varchar("image", { length: 255 }),
+  createdBy: int("created_by").references(() => users.id),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedBy: int("updated_by").references(() => users.id),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow(),
 });

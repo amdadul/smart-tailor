@@ -5,12 +5,14 @@ import {
   int,
   mysqlTable,
   serial,
+  timestamp,
   tinyint,
   varchar,
 } from "drizzle-orm/mysql-core";
-import { paymentMethods } from "../../config/models/paymentMethods.schema";
-import { status } from "../../config/models/status.schema";
-import { customers } from "../../customers/models/customers.schema";
+import { paymentMethods } from "../../config/models/paymentMethods.schema.js";
+import { status } from "../../config/models/status.schema.js";
+import { customers } from "../../customers/models/customers.schema.js";
+import { users } from "../../users/models/users.schema.js";
 
 export const orders = mysqlTable("orders", {
   id: serial("id").primaryKey(),
@@ -35,4 +37,8 @@ export const orders = mysqlTable("orders", {
   isMeasurementDressGiven: boolean("is_measurement_dress_given").default(false),
   numberOfMeasurementDress: int("number_of_measurement_dress"),
   status: tinyint("status").references(() => status.id),
+  createdBy: int("created_by").references(() => users.id),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedBy: int("updated_by").references(() => users.id),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow(),
 });
