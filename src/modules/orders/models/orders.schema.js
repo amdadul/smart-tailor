@@ -4,7 +4,6 @@ import {
   decimal,
   int,
   mysqlTable,
-  serial,
   timestamp,
   tinyint,
   varchar,
@@ -15,7 +14,7 @@ import { customers } from "../../customers/models/customers.schema.js";
 import { users } from "../../users/models/users.schema.js";
 
 export const orders = mysqlTable("orders", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   orderNo: varchar("order_no", { length: 100 }),
   type: tinyint("type"), // 1->Stitching, 2->Alteration
   customerId: int("customer_id").references(() => customers.id),

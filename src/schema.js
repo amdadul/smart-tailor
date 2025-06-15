@@ -2,6 +2,7 @@
 export * from "./modules/config/models/paymentMethods.schema.js";
 export * from "./modules/config/models/settings.schema.js";
 export * from "./modules/config/models/status.schema.js";
+export * from "./modules/customers/models/customers.schema.js";
 export * from "./modules/orders/models/orderDetails.schema.js";
 export * from "./modules/orders/models/orderImages.schema.js";
 export * from "./modules/orders/models/orderMeasurements.schema.js";

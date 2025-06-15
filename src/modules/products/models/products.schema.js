@@ -2,7 +2,6 @@ import {
   decimal,
   int,
   mysqlTable,
-  serial,
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
@@ -10,7 +9,7 @@ import { businesses } from "../../subscriptions/models/businesses.schema.js";
 import { users } from "../../users/models/users.schema.js";
 
 export const products = mysqlTable("products", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   businessId: int("business_id").references(() => businesses.id),
   name: varchar("name", { length: 100 }),
   price: decimal("price", { precision: 10, scale: 2 }),

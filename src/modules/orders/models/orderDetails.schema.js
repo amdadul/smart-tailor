@@ -2,7 +2,6 @@ import {
   decimal,
   int,
   mysqlTable,
-  serial,
   text,
   tinyint,
 } from "drizzle-orm/mysql-core";
@@ -10,7 +9,7 @@ import { products } from "../../products/models/products.schema.js";
 import { orders } from "./orders.schema.js";
 
 export const orderDetails = mysqlTable("order_details", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   orderId: int("order_id").references(() => orders.id),
   productId: int("product_id").references(() => products.id),
   specialNote: text("special_note"),

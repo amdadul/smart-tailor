@@ -1,15 +1,9 @@
-import {
-  int,
-  mysqlTable,
-  serial,
-  timestamp,
-  varchar,
-} from "drizzle-orm/mysql-core";
+import { int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { businesses } from "../../subscriptions/models/businesses.schema.js";
 import { users } from "../../users/models/users.schema.js";
 
 export const customers = mysqlTable("customers", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   businessId: int("business_id").references(() => businesses.id),
   name: varchar("name", { length: 100 }),
   phone: varchar("phone", { length: 20 }),

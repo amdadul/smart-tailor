@@ -1,7 +1,7 @@
-import { boolean, int, mysqlTable, serial, text } from "drizzle-orm/mysql-core";
+import { boolean, int, mysqlTable, text } from "drizzle-orm/mysql-core";
 
 export const settings = mysqlTable("settings", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   businessId: int("business_id"),
   deliveryDuration: int("delivery_duration"),
   trialDuration: int("trial_duration"),

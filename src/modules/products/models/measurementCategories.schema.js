@@ -1,7 +1,6 @@
 import {
   int,
   mysqlTable,
-  serial,
   timestamp,
   tinyint,
   varchar,
@@ -9,7 +8,7 @@ import {
 import { users } from "../../users/models/users.schema.js";
 
 export const measurementCategories = mysqlTable("measurement_categories", {
-  id: serial("id").primaryKey(),
+  id: int("id").primaryKey().autoincrement(),
   name: varchar("name", { length: 100 }),
   type: tinyint("type").default(1), // 1->main, 2->loose
   createdBy: int("created_by").references(() => users.id),
