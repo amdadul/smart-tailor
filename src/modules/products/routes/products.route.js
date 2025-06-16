@@ -6,6 +6,11 @@ import {
   getMeasurementCategoryList,
 } from "../controllers/measurementCategories.controller.js";
 import {
+  createProduct,
+  getProductById,
+  getProducts,
+} from "../controllers/products.controller.js";
+import {
   createStyleCategory,
   getStyleCategoryList,
 } from "../controllers/styleCategories.controller.js";
@@ -14,6 +19,7 @@ import {
   getStyleOptions,
 } from "../controllers/styleOptions.controller.js";
 import { validateCreateMeasurementCategory } from "../validations/measurementCategories.validation.js";
+import { validateCreateProducts } from "../validations/products.validation.js";
 import { validateCreateStyleCategory } from "../validations/styleCategories.validation.js";
 import { validateCreateStyleOptions } from "../validations/styleOptions.validation.js";
 
@@ -52,5 +58,9 @@ router.get(
   authenticate,
   getMeasurementCategoryByType
 );
+
+router.post("/create", authenticate, validateCreateProducts, createProduct);
+router.get("/list", authenticate, getProducts);
+router.get("/productById/:id", authenticate, getProductById);
 
 export default router;
