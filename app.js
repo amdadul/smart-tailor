@@ -5,6 +5,7 @@ import logger from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import configRouter from "./src/modules/config/routes/config.route.js";
 import productsRouter from "./src/modules/products/routes/products.route.js";
 import subscriptionsRouter from "./src/modules/subscriptions/routes/subscriptions.route.js";
 import usersRouter from "./src/modules/users/routes/users.route.js";
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", usersRouter);
 app.use("/subscriptions", subscriptionsRouter);
 app.use("/products", productsRouter);
+app.use("/config", configRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
